@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './App.css';
 
 const App = () => {
 
@@ -34,22 +35,21 @@ const App = () => {
     console.log(`target ABV: ${targetABV}`)
   }
 
-  const InputRow = ({ textLabel, handler }) => {
-    return (
-      <tr>
-        <td>
-          {textLabel}:
-        </td>
-        <td>
-          <input onChange={(event) => {handler}} />
-        </td>
-      </tr>
-    )
+  const resetAllFields = () => {
+    let inputs = document.getElementsByClassName('digitInput');
+    for ( let i = 0; i < inputs.length; i++ ) {
+      inputs[i].value = '';
+    }
+    setInputVolume(0);
+    setInputABV(0);
+    setTargetABV(0);
+    setOutput(0);
   }
 
 
   return (
     <div className="App">
+      <h1>Dilution Calculator</h1>
         <table>
           <tbody>
         <tr>
@@ -57,7 +57,7 @@ const App = () => {
         Starting volume: 
           </td> 
           <td>
-            <input onChange={(event) => handleVolumeInput(event)} />
+            <input className='digitInput' onChange={(event) => handleVolumeInput(event)} /> liters
           </td>
         </tr>
         <tr>
@@ -65,7 +65,7 @@ const App = () => {
         Starting ABV: 
         </td> 
         <td>
-          <input onChange={(event) => handleABVInput(event)} />
+          <input className='digitInput' onChange={(event) => handleABVInput(event)} /> %
         </td>
         </tr>
         <tr>
@@ -73,7 +73,7 @@ const App = () => {
         Target ABV: 
           </td> 
           <td>
-            <input onChange={(event) => handleABVTarget(event)} />
+            <input className='digitInput' onChange={(event) => handleABVTarget(event)} /> %
           </td>
         </tr>
         </tbody>
@@ -82,6 +82,7 @@ const App = () => {
             () => 
             calculateAddition(inputVolume, inputABV, targetABV, output)
             }>Go!</button>
+        <button onClick={() => resetAllFields(inputVolume,inputABV,targetABV, output)}>Reset</button>
         <table>
         <tbody>
         <tr>
@@ -89,7 +90,7 @@ const App = () => {
         Required additions: 
           </td> 
           <td>
-             {output}
+             {output} liters
           </td>
         </tr>
         <tr>
@@ -97,7 +98,7 @@ const App = () => {
         Final Volume:
           </td> 
           <td>
-             {output + inputVolume}
+             {output + inputVolume} liters
           </td>
         </tr>
         </tbody>

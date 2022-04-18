@@ -1,0 +1,7 @@
+.digitInput {
+    text-align: right;
+}
+
+digitInput-INVALID {
+    background-color: red;
+}
