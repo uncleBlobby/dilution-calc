@@ -2,6 +2,10 @@
     text-align: right;
 }
 
-digitInput-INVALID {
-    background-color: red;
+.digitInput-VALID {
+    border-color: green;
+}
+
+.digitInput-INVALID {
+    background-color: rgb(255, 124, 124);
 }

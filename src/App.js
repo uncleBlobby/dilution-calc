@@ -10,29 +10,23 @@ const App = () => {
   const [output, setOutput] = useState(0);
 
   const handleVolumeInput = (event) => {
-    console.log(event.target.value)
-    setInputVolume(parseInt(event.target.value));
-    console.log(`input volume ${inputVolume}`)
+    checkAllFieldsForInvalidInput(event);
+    setInputVolume(Number(event.target.value));
   }
 
   const handleABVInput = (event) => {
-    console.log(event.target.value)
-    setInputABV(parseInt(event.target.value));
-    console.log(`input ABV: ${inputABV}`)
+    checkAllFieldsForInvalidInput(event);
+    setInputABV(Number(event.target.value));
   }
 
   const handleABVTarget = (event) => {
-    console.log(event.target.value)
-    setTargetABV(parseInt(event.target.value));
-    console.log(`target ABV: ${targetABV}`)
+    checkAllFieldsForInvalidInput(event);
+    setTargetABV(Number(event.target.value));
   }
 
   const calculateAddition = (inputVolume, inputABV, targetABV, output) => {
     output = ((inputVolume * inputABV) / targetABV) - inputVolume;
     setOutput(output);
-    console.log(`input volume: ${inputVolume}`)
-    console.log(`input ABV: ${inputABV}`)
-    console.log(`target ABV: ${targetABV}`)
   }
 
   const resetAllFields = () => {
@@ -46,6 +40,18 @@ const App = () => {
     setOutput(0);
   }
 
+  const checkAllFieldsForInvalidInput = (event) => {
+    let inputs = document.getElementsByClassName('digitInput');
+    const reg = new RegExp(/^\d*\.?\d*$/);
+    for ( let i = 0; i < inputs.length; i++ ) {
+      if ( (!reg.test(inputs[i].value)) && (inputs[i].value !== '' )) {
+        inputs[i].classList.add('digitInput-INVALID');
+      } else if ( (reg.test(inputs[i].value)) || (inputs[i].value === '')) {
+        inputs[i].classList.remove('digitInput-INVALID');
+      }
+    }  
+  }
+
 
   return (
     <div className="App">
@@ -57,7 +63,7 @@ const App = () => {
         Starting volume: 
           </td> 
           <td>
-            <input className='digitInput' onChange={(event) => handleVolumeInput(event)} /> liters
+            <input id='volInput' className='digitInput' onChange={(event) => handleVolumeInput(event)} /> liters
           </td>
         </tr>
         <tr>
@@ -65,7 +71,7 @@ const App = () => {
         Starting ABV: 
         </td> 
         <td>
-          <input className='digitInput' onChange={(event) => handleABVInput(event)} /> %
+          <input id='ABVInput' className='digitInput' onChange={(event) => handleABVInput(event)} /> %
         </td>
         </tr>
         <tr>
@@ -73,7 +79,7 @@ const App = () => {
         Target ABV: 
           </td> 
           <td>
-            <input className='digitInput' onChange={(event) => handleABVTarget(event)} /> %
+            <input id='targetABVInput' className='digitInput' onChange={(event) => handleABVTarget(event)} /> %
           </td>
         </tr>
         </tbody>
@@ -90,7 +96,7 @@ const App = () => {
         Required additions: 
           </td> 
           <td>
-             {output} liters
+             {output.toFixed(2)} liters
           </td>
         </tr>
         <tr>
@@ -98,7 +104,7 @@ const App = () => {
         Final Volume:
           </td> 
           <td>
-             {output + inputVolume} liters
+             {(output + inputVolume).toFixed(2)} liters
           </td>
         </tr>
         </tbody>
