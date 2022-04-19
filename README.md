@@ -27,3 +27,6 @@ To use the app, simply enter your starting information (quantity, concentration,
 The computer will take care of the math, and you can sit back and relax.. at least until it comes time to measure that pesky water (or syrup, flavouring,
 whatever else you are using to do your dilution).
 
+Unlike the CAT APP, which is primarily distiller-specific, this dilution calculator can be used by distillers, brewers, winemakers, and anyone else in the club.  I would invite you to give it a try, and see what you think.  It isn't going to change your life drastically -- I hope -- but if you can find a use for it, please be my guest.
+
+Thanks ~
