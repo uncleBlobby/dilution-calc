@@ -9,6 +9,8 @@ get quite good at it.  Sometimes, I don't even need to do the math (again) becau
 
 Other times, you have to do the math -- and that's where this app can come in handy.
 
+![Dilution Calc Screenshot](https://raw.githubusercontent.com/uncleBlobby/dilution-calc/main/docs/Screenshot%20from%202022-04-18%2018-28-24.png)
+
 In order to perform a dilution calculation, typically, we use three known pieces of information to calculate one unknown variable.
 
 Known Variables:
