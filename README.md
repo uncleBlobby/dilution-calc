@@ -17,7 +17,8 @@ Known Variables:
 3. Target ABV of end result.
 
 Unknown Variable:
-4. Final Volume (and therefore, required additions)
+
+4. Final Volume (and therefore, any volume of required additions).
 
 To use the app, simply enter your starting information (quantity, concentration, and desired output) into the data fields and hit 'Go!'.
 
